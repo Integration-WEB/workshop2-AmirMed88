@@ -1,0 +1,79 @@
+$primary-color: #ff752f;
+body{
+    color: $primary-color;
+}
+.button{
+    display:inline-block;
+    color: $primary-color;
+    text-align: center;
+    border:solid 2px $primary-color;
+}
+.button-alert{
+    @extend .button;
+    border-radius: 4px;
+}
+@mixin inline-block($margin: 10px) {
+    display: 10px;
+    margin-left:$margin;
+    
+}
+#box{
+    font: {
+        weight:bold;
+        family: Algerian ;
+    }
+    @include inline-block()
+}
+@for $i from 1 through 3{
+    .m-#{$i}{
+        margin:0 ($i*0.25rem)
+    }
+}
+
+.btn{
+    background:$primary-color;
+    border-radius: 5px;
+    @if lightness($primary-color)>50%{
+        color:#ffb60b;
+    }
+    @else{
+        color:#ff1f17;
+    }
+}
+//atlier
+$secondary-color: red;
+
+.text,textarea,h1{
+    color:$secondary-color;
+    font-size: 20px;
+
+}
+@mixin borders($border: 3px ) {
+    border:3px solid yellow
+    
+}
+.btns{
+    @include borders();
+}
+.fun{
+    background-color: $secondary-color;
+    @if lightness($secondary-color)!=white{
+        color:#ffffff;
+    }
+    @else{
+        color:#ff1f17;
+    }
+
+
+}
+
+    $languages:'HTML5', 'CSS3', 'JAVA', 'React';
+    @function test1($List){
+        @return nth($languages,1);
+    }
+    @function test2($List){
+        @return nth($languages,length($languages));
+    }
+.languages{
+    content:test2($languages);
+}
